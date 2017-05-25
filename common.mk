@@ -1,3 +1,5 @@
+DEFAULT_ROOT_METHOD := magisk
+SET_MICROG := true
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 TARGET_BOOTANIMATION_480P := $(shell \
@@ -40,6 +42,29 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES +=  \
     vendor/aosp/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
     vendor/aosp/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
+
+ifeq ($(SET_MICROG),true)
+# Setup MicroG
+
+PRODUCT_COPY_FILES += \
+    vendor/aosp/prebuilt/common/lib64/libvtm-jni.so:install/lib64/libvtm-jni.so \
+    vendor/aosp/prebuilt/common/framework/maps.jar:system/framework/com.google.android.maps.jar \
+    vendor/aosp/prebuilt/common/bin/microg.sh:install/bin/microg.sh
+
+
+PRODUCT_PACKAGES += \
+    GmsCore \
+    DroidGuard \
+    FDroidPrivilegedExtension \
+    GoogleCalendarSyncAdapter \
+    GoogleContactsSyncAdapter \
+    GoogleServicesFramework \
+    IchnaeaNlpBackend \
+    NominatimGeocoderBackend \
+    Phonesky
+$(call inherit-product, vendor/aosp/config/gmaps_permissions.mk)
+endif
+
 
 ifeq ($(DEFAULT_ROOT_METHOD),magisk)
 # Magisk Manager
@@ -183,6 +208,7 @@ PRODUCT_PACKAGES += \
 	LiveWallpapers \
 	LiveWallpapersPicker \
         Phonograph \
+	KernelAuditor \
 	OmniJaws
 
 $(call inherit-product, vendor/aosp/config/aex_props.mk)
@@ -202,6 +228,19 @@ $(call inherit-product-if-exists, vendor/aosp/config/ota.mk)
 
 endif
 
+ifeq ($(SET_MICROG),true)
+EXTENDED_MOD_VERSION := AospExtended-$(EXTENDED_VERSION)-$(shell date -u +%Y%m%d-%H%M)-$(EXTENDED_BUILD_TYPE)-MicroG
+
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.extended.version=$(EXTENDED_VERSION) \
+  ro.extended.releasetype=$(EXTENDED_BUILD_TYPE) \
+  ro.modversion=$(EXTENDED_MOD_VERSION)
+  
+EXTENDED_DISPLAY_VERSION := AospExtended-$(EXTENDED_VERSION)-$(EXTENDED_BUILD_TYPE)-Microg
+
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.extended.display.version=$(EXTENDED_DISPLAY_VERSION)
+else
 EXTENDED_MOD_VERSION := AospExtended-$(EXTENDED_VERSION)-$(shell date -u +%Y%m%d-%H%M)-$(EXTENDED_BUILD_TYPE)
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -213,3 +252,4 @@ EXTENDED_DISPLAY_VERSION := AospExtended-$(EXTENDED_VERSION)-$(EXTENDED_BUILD_TY
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.extended.display.version=$(EXTENDED_DISPLAY_VERSION)
+endif
