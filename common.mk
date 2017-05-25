@@ -209,7 +209,8 @@ PRODUCT_PACKAGES += \
 	LiveWallpapersPicker \
         Phonograph \
 	KernelAuditor \
-	OmniJaws
+	OmniJaws \
+	AsusCalc
 
 $(call inherit-product, vendor/aosp/config/aex_props.mk)
 
