@@ -132,8 +132,7 @@ PRODUCT_PACKAGES += \
     AEXPapers \
     OmniStyle \
     CalendarWidget \
-    Turbo \
-    NewPipe
+    Turbo
 
 # Include explicitly to work around Facelock issues
 PRODUCT_PACKAGES += \
