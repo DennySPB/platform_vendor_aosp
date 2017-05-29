@@ -1,5 +1,5 @@
 DEFAULT_ROOT_METHOD := magisk
-SET_MICROG := true
+SET_DMOD := true
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 TARGET_BOOTANIMATION_480P := $(shell \
@@ -43,27 +43,27 @@ PRODUCT_COPY_FILES +=  \
     vendor/aosp/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
     vendor/aosp/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
-ifeq ($(SET_MICROG),true)
+#ifeq ($(SET_MICROG),true)
 # Setup MicroG
 
-PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/lib64/libvtm-jni.so:install/lib64/libvtm-jni.so \
-    vendor/aosp/prebuilt/common/framework/maps.jar:system/framework/com.google.android.maps.jar \
-    vendor/aosp/prebuilt/common/bin/microg.sh:install/bin/microg.sh
+#PRODUCT_COPY_FILES += \
+#    vendor/aosp/prebuilt/common/lib64/libvtm-jni.so:install/lib64/libvtm-jni.so \
+#    vendor/aosp/prebuilt/common/framework/maps.jar:system/framework/com.google.android.maps.jar \
+#    vendor/aosp/prebuilt/common/bin/microg.sh:install/bin/microg.sh
 
 
-PRODUCT_PACKAGES += \
-    GmsCore \
-    DroidGuard \
-    FDroidPrivilegedExtension \
-    GoogleCalendarSyncAdapter \
-    GoogleContactsSyncAdapter \
-    GoogleServicesFramework \
-    IchnaeaNlpBackend \
-    NominatimGeocoderBackend \
-    Phonesky
-$(call inherit-product, vendor/aosp/config/gmaps_permissions.mk)
-endif
+#PRODUCT_PACKAGES += \
+#    GmsCore \
+#    DroidGuard \
+#    FDroidPrivilegedExtension \
+#    GoogleCalendarSyncAdapter \
+#    GoogleContactsSyncAdapter \
+#    GoogleServicesFramework \
+#    IchnaeaNlpBackend \
+#    NominatimGeocoderBackend \
+#    Phonesky
+#$(call inherit-product, vendor/aosp/config/gmaps_permissions.mk)
+#endif
 
 
 ifeq ($(DEFAULT_ROOT_METHOD),magisk)
@@ -132,7 +132,8 @@ PRODUCT_PACKAGES += \
     AEXPapers \
     OmniStyle \
     CalendarWidget \
-    Turbo
+    Turbo \
+    NewPipe
 
 # Include explicitly to work around Facelock issues
 PRODUCT_PACKAGES += \
@@ -229,15 +230,15 @@ $(call inherit-product-if-exists, vendor/aosp/config/ota.mk)
 
 endif
 
-ifeq ($(SET_MICROG),true)
-EXTENDED_MOD_VERSION := AospExtended-$(EXTENDED_VERSION)-$(shell date -u +%Y%m%d-%H%M)-$(EXTENDED_BUILD_TYPE)-MicroG
+ifeq ($(SET_DMOD),true)
+EXTENDED_MOD_VERSION := AospExtended-$(EXTENDED_VERSION)-$(shell date -u +%Y%m%d-%H%M)-$(EXTENDED_BUILD_TYPE)-Mod
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.extended.version=$(EXTENDED_VERSION) \
   ro.extended.releasetype=$(EXTENDED_BUILD_TYPE) \
   ro.modversion=$(EXTENDED_MOD_VERSION)
   
-EXTENDED_DISPLAY_VERSION := AospExtended-$(EXTENDED_VERSION)-$(EXTENDED_BUILD_TYPE)-Microg
+EXTENDED_DISPLAY_VERSION := AospExtended-$(EXTENDED_VERSION)-$(EXTENDED_BUILD_TYPE)-Mod
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.extended.display.version=$(EXTENDED_DISPLAY_VERSION)
