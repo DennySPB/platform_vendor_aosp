@@ -45,8 +45,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 endif
 
 # MusicFX advanced effects
-ifneq ($(TARGET_NO_DSPMANAGER), true)
-PRODUCT_PACKAGES += \
-    libcyanogen-dsp \
-    audio_effects.conf
-endif
+#ifneq ($(TARGET_NO_DSPMANAGER), true)
+#PRODUCT_PACKAGES += \
+#    libcyanogen-dsp \
+#    audio_effects.conf
+#endif

@@ -1,3 +1,6 @@
+SET_V4A := true
+DEFAULT_ROOT_METHOD := magisk
+TARGET_NO_DSPMANAGER := true
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 TARGET_BOOTANIMATION_480P := $(shell \
@@ -75,7 +78,6 @@ PRODUCT_COPY_FILES += \
 # Misc packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
-    MusicFX \
     LatinIME \
     libemoji \
     libsepol \
@@ -103,10 +105,25 @@ PRODUCT_PACKAGES += \
     PixelLauncher \
     WallpaperPickerGoogle \
     ViaBrowser \
-    AEXPapers \
     OmniStyle \
     CalendarWidget \
-    Turbo
+    Turbo \
+    AsusCalc \
+    KernelAuditor
+
+
+ifeq ($(SET_V4A),true)
+PRODUCT_PACKAGES += \
+    ViPER4Android
+PRODUCT_COPY_FILES += \
+    vendor/aosp/prebuilt/common/viperfx/audio_effects.conf:system/etc/audio_effects.conf \
+    vendor/aosp/prebuilt/common/viperfx/libv4a_fx_ics.so:system/lib/soundfx/libv4a_fx_ics.so \
+    vendor/aosp/prebuilt/common/viperfx/libV4AJniUtils.so:system/lib/libV4AJniUtils.so
+else
+PRODUCT_PACKAGES += \
+    MusicFX
+endif
+
 
 # Include explicitly to work around Facelock issues
 PRODUCT_PACKAGES += \
@@ -190,8 +207,8 @@ $(call inherit-product, vendor/aosp/config/aex_props.mk)
 EXTENDED_VERSION = v4.2
 
 ifndef EXTENDED_BUILD_TYPE
-    EXTENDED_BUILD_TYPE := UNOFFICIAL
-    PLATFORM_VERSION_CODENAME := UNOFFICIAL
+    EXTENDED_BUILD_TYPE := Mod
+    PLATFORM_VERSION_CODENAME := Unofficial
 endif 
 
 ifeq ($(EXTENDED_BUILD_TYPE), OFFICIAL)
