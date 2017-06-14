@@ -249,13 +249,12 @@ $(call inherit-product-if-exists, vendor/aosp/config/ota.mk)
 endif
 
 ifeq ($(SET_DMOD),true)
-EXTENDED_MOD_VERSION := AospExtended-$(EXTENDED_VERSION)-$(shell date -u +%Y%m%d-%H%M)-$(EXTENDED_BUILD_TYPE)-Mod
+EXTENDED_MOD_VERSION := AospExtended-$(EXTENDED_VERSION)-$(shell date -u +%Y%m%d-%H%M)-$(EXTENDED_BUILD_TYPE)
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.extended.version=$(EXTENDED_VERSION) \
   ro.extended.releasetype=$(EXTENDED_BUILD_TYPE) \
   ro.modversion=$(EXTENDED_MOD_VERSION)
-  
 EXTENDED_DISPLAY_VERSION := AospExtended-$(EXTENDED_VERSION)-$(EXTENDED_BUILD_TYPE)-Mod
 
 PRODUCT_PROPERTY_OVERRIDES += \
