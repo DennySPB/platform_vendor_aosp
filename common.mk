@@ -69,10 +69,6 @@ PRODUCT_COPY_FILES +=  \
 
 
 ifeq ($(DEFAULT_ROOT_METHOD),magisk)
-# Magisk Manager
-PRODUCT_PACKAGES += \
-    MagiskManager
-
 # Copy Magisk zip
 PRODUCT_COPY_FILES += \
     vendor/aosp/prebuilt/zip/magisk.zip:system/addon.d/magisk.zip
@@ -126,7 +122,8 @@ PRODUCT_PACKAGES += \
     strace \
     ThemeInterfacer \
     Terminal \
-    Launcher3 \
+#    Launcher3 \
+    PixelLauncher \
     WallpaperPickerGoogle \
     ViaBrowser \
     OmniStyle \
