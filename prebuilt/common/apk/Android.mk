@@ -54,7 +54,6 @@ LOCAL_CERTIFICATE := platform
 include $(BUILD_PREBUILT)
 
 #Pixel Launcher
-
 include $(CLEAR_VARS)
 LOCAL_MODULE := PixelLauncher
 LOCAL_MODULE_TAGS := optional

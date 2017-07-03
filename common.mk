@@ -126,7 +126,7 @@ PRODUCT_PACKAGES += \
     strace \
     ThemeInterfacer \
     Terminal \
-    PixelLauncher \
+    Launcher3 \
     WallpaperPickerGoogle \
     ViaBrowser \
     OmniStyle \
@@ -180,6 +180,10 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     Stk
+
+# Include librsjni explicitly to workaround GMS issue
+PRODUCT_PACKAGES += \
+    librsjni
 
 # Telephony
 PRODUCT_PACKAGES += \
