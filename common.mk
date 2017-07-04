@@ -122,7 +122,6 @@ PRODUCT_PACKAGES += \
     strace \
     ThemeInterfacer \
     Terminal \
-#    Launcher3 \
     PixelLauncher \
     WallpaperPickerGoogle \
     ViaBrowser \
