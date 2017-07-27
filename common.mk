@@ -1,5 +1,4 @@
 SET_V4A := true
-DEFAULT_ROOT_METHOD := magisk
 TARGET_NO_DSPMANAGER := true
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
@@ -122,7 +121,7 @@ PRODUCT_PACKAGES += \
     strace \
     ThemeInterfacer \
     Terminal \
-    PixelLauncher \
+    Launcher3 \
     WallpaperPickerGoogle \
     ViaBrowser \
     OmniStyle \
@@ -211,6 +210,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/aosp/prebuilt/common/etc/selective-spn-conf.xml:system/etc/selective-spn-conf.xml
 
+# Google Unlimited photo enabler
+PRODUCT_COPY_FILES += \
+    vendor/aosp/prebuilt/common/etc/nexus.xml:system/etc/sysconfig/nexus.xml
+
+
 # Overlays & Include LatinIME dictionaries
 PRODUCT_PACKAGE_OVERLAYS += \
 	vendor/aosp/overlay/common \
@@ -241,7 +245,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, vendor/aosp/config/aex_props.mk)
 
 #Extended Versioning
-EXTENDED_VERSION = v4.3
+EXTENDED_VERSION = v4.4
 
 ifndef EXTENDED_BUILD_TYPE
     EXTENDED_BUILD_TYPE := Mod
