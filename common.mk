@@ -121,7 +121,7 @@ PRODUCT_PACKAGES += \
     strace \
     ThemeInterfacer \
     Terminal \
-    Launcher3 \
+    LawnChair \
     WallpaperPickerGoogle \
     ViaBrowser \
     OmniStyle \

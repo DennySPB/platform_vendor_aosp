@@ -53,10 +53,10 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_CERTIFICATE := platform
 include $(BUILD_PREBUILT)
 
-#Pixel WallpaperPicker
+#Lawnchair
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := WallpaperPickerGoogle
+LOCAL_MODULE := LawnChair
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := $(LOCAL_MODULE).apk
 LOCAL_CERTIFICATE := platform
