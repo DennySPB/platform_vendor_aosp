@@ -16,7 +16,7 @@ PRODUCT_COPY_FILES += \
     vendor/aosp/prebuilt/common/media/bootanimation-480p.zip:system/media/bootanimation.zip
 else
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/media/bootanimation.zip:system/media/bootanimation.zip
+    vendor/aosp/prebuilt/common/media/aex.zip:system/media/bootanimation.zip
 endif
 
 # Backup Tool
