@@ -52,6 +52,12 @@ PRODUCT_COPY_FILES +=  \
 #$(call inherit-product, vendor/aosp/config/gmaps_permissions.mk)
 #endif
 
+ifeq ($(TARGET_NEEDS_GAPPS),true)
+$(call inherit-product, vendor/pixelgapps/pixel-gapps.mk)
+else
+PRODUCT_PACKAGES += \
+    LawnChair
+endif
 
 ifeq ($(DEFAULT_ROOT_METHOD),magisk)
 # Copy Magisk zip
@@ -107,7 +113,6 @@ PRODUCT_PACKAGES += \
     strace \
     ThemeInterfacer \
     Terminal \
-    LawnChair \
     WallpaperPickerGoogle \
     ViaBrowser \
     OmniStyle \
@@ -115,7 +120,6 @@ PRODUCT_PACKAGES += \
     Turbo \
     AsusCalc \
     KernelAuditor
-
 
 ifeq ($(SET_V4A),true)
 PRODUCT_PACKAGES += \
@@ -250,12 +254,21 @@ endif
 
 EXTENDED_MOD_VERSION := AospExtended-$(EXTENDED_VERSION)-$(shell date -u +%Y%m%d-%H%M)-$(EXTENDED_BUILD_TYPE)
 
+ifeq ($(TARGET_NEEDS_GAPPS),true)
+EXTENDED_MOD_VERSION := AospExtended-$(EXTENDED_VERSION)-gapps-$(shell date -u +%Y%m%d-%H%M)-$(EXTENDED_BUILD_TYPE)
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.extended.gapps=Embedded
+EXTENDED_DISPLAY_VERSION := AospExtended-$(EXTENDED_VERSION)-gapps-$(EXTENDED_BUILD_TYPE)
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.extended.gapps=None
+EXTENDED_DISPLAY_VERSION := AospExtended-$(EXTENDED_VERSION)-$(EXTENDED_BUILD_TYPE)
+endif
+
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.extended.version=$(EXTENDED_VERSION) \
   ro.extended.releasetype=$(EXTENDED_BUILD_TYPE) \
   ro.modversion=$(EXTENDED_MOD_VERSION)
-  
-EXTENDED_DISPLAY_VERSION := AospExtended-$(EXTENDED_VERSION)-$(EXTENDED_BUILD_TYPE)
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.extended.display.version=$(EXTENDED_DISPLAY_VERSION)
