@@ -30,28 +30,6 @@ PRODUCT_COPY_FILES +=  \
     vendor/aosp/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
     vendor/aosp/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
-#ifeq ($(SET_MICROG),true)
-# Setup MicroG
-
-#PRODUCT_COPY_FILES += \
-#    vendor/aosp/prebuilt/common/lib64/libvtm-jni.so:install/lib64/libvtm-jni.so \
-#    vendor/aosp/prebuilt/common/framework/maps.jar:system/framework/com.google.android.maps.jar \
-#    vendor/aosp/prebuilt/common/bin/microg.sh:install/bin/microg.sh
-
-
-#PRODUCT_PACKAGES += \
-#    GmsCore \
-#    DroidGuard \
-#    FDroidPrivilegedExtension \
-#    GoogleCalendarSyncAdapter \
-#    GoogleContactsSyncAdapter \
-#    GoogleServicesFramework \
-#    IchnaeaNlpBackend \
-#    NominatimGeocoderBackend \
-#    Phonesky
-#$(call inherit-product, vendor/aosp/config/gmaps_permissions.mk)
-#endif
-
 ifeq ($(TARGET_NEEDS_GAPPS),true)
 $(call inherit-product, vendor/pixelgapps/pixel-gapps.mk)
 else
