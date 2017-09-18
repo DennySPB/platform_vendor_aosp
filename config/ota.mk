@@ -13,11 +13,11 @@
 # limitations under the License.
 
 
-PRODUCT_PACKAGES += \
-        AEXOTA \
-        libbypass
+#PRODUCT_PACKAGES += \
+#        AEXOTA \
+#        libbypass
 
-PRODUCT_PROPERTY_OVERRIDES += \
-        ro.ota.romname=AospExtended-ROM \
-        ro.ota.version=$(shell date +"%Y%m%d") \
-	ro.ota.manifest=http://downloads.aospextended.com/aexota/$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
+#PRODUCT_PROPERTY_OVERRIDES += \
+#        ro.ota.romname=AospExtended-ROM \
+#        ro.ota.version=$(shell date +"%Y%m%d") \
+#	ro.ota.manifest=http://downloads.aospextended.com/aexota/$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
