@@ -96,8 +96,11 @@ PRODUCT_PACKAGES += \
     OmniStyle \
     CalendarWidget \
     Turbo \
-    AsusCalc \
-    KernelAuditor
+    KernelAuditor \
+    Spectrum
+
+#    AsusCalc \
+
 
 ifeq ($(SET_V4A),true)
 PRODUCT_PACKAGES += \
@@ -203,6 +206,10 @@ PRODUCT_COPY_FILES += \
 endif
 
 $(call inherit-product-if-exists, vendor/extra/product.mk)
+
+#Miui Apps
+
+$(call inherit-product-if-exists, vendor/miui/miui-apps.mk)
 
 PRODUCT_PACKAGES += \
 	messaging \
