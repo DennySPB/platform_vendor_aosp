@@ -99,8 +99,6 @@ PRODUCT_PACKAGES += \
     KernelAuditor \
     Spectrum
 
-#    AsusCalc \
-
 
 ifeq ($(SET_V4A),true)
 PRODUCT_PACKAGES += \
@@ -207,10 +205,6 @@ endif
 
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
-#Miui Apps
-
-$(call inherit-product-if-exists, vendor/miui/miui-apps.mk)
-
 PRODUCT_PACKAGES += \
 	messaging \
 	LiveWallpapers \
@@ -218,7 +212,6 @@ PRODUCT_PACKAGES += \
         Phonograph \
 	KernelAuditor \
 	OmniJaws
-#	AsusCalc
 
 $(call inherit-product, vendor/aosp/config/aex_props.mk)
 
