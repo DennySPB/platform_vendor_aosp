@@ -97,7 +97,6 @@ PRODUCT_PACKAGES += \
     CalendarWidget \
     Turbo \
     KernelAuditor \
-    Spectrum
 
 
 ifeq ($(SET_V4A),true)
