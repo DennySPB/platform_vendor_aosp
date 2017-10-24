@@ -34,7 +34,8 @@ ifeq ($(TARGET_NEEDS_GAPPS),true)
 $(call inherit-product, vendor/pixelgapps/pixel-gapps.mk)
 else
 PRODUCT_PACKAGES += \
-    LawnChair
+    LawnChair \
+    Lawnfeed
 endif
 
 ifeq ($(DEFAULT_ROOT_METHOD),magisk)
